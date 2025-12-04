@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>🚧 الصيانة جارية 🚧</title>
+<title> PrimeBinZayed WebSite </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -142,14 +142,6 @@ setInterval(()=>{
         if(drops[i]*font>c.height&&Math.random()>0.96) drops[i]=0;drops[i]++;
     }
 },40);
-
-/* Countdown 5 hours */
-let time=5*60*60;
-setInterval(()=>{
-    let h=Math.floor(time/3600),m=Math.floor((time%3600)/60),s=time%60;
-    document.getElementById("countdown").innerText=`الانتهاء المتوقع: ${h}h : ${m<10?'0'+m:m}m : ${s<10?'0'+s:s}s`;
-    if(time>0) time--;
-},1000);
 
 /* Terminal Messages */
 let lines=[
