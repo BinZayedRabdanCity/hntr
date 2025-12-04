@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الموقع تحت الصيانة</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family: "Consolas", monospace;}
+    body{
+        background:#000;
+        color:#fff;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+    }
+
+    .container{
+        text-align:center;
+        padding:35px 40px;
+        width:85%;
+        max-width:650px;
+        border:1px solid #fff;
+        border-radius:8px;
+        background:rgba(0,0,0,0.45);
+        backdrop-filter:blur(4px);
+        box-shadow:0 0 40px rgba(255,255,255,0.15);
+        position:relative;
+        animation:borderPulse 2s infinite alternate;
+    }
+
+    /* عنوان Glitch */
+    h1{
+        font-size:34px;
+        font-weight:bold;
+        letter-spacing:2px;
+        position:relative;
+        display:inline-block;
+        margin-bottom:18px;
+    }
+    h1::before, h1::after{
+        content:"الموقع قيد الصيانة";
+        position:absolute;left:0;top:0;
+        width:100%;height:100%;
+        background:black;overflow:hidden;
+        clip-path:inset(0 0 0 0);
+        opacity:0.15;
+    }
+    h1::before{transform:translate(2px, -2px);color:#fff;}
+    h1::after{transform:translate(-2px, 2px);color:#fff;}
+
+    p{font-size:15px;opacity:0.85;margin-top:6px;line-height:1.8;}
+
+    /* Loading Bar */
+    .loading{
+        margin:18px 0;
+        width:100%;height:7px;
+        border:1px solid #fff;
+        border-radius:4px;
+        overflow:hidden;
+        background:#111;
+    }
+    .loading-fill{
+        height:100%;
+        width:35%;
+        background:#fff;
+        animation:progress 2s infinite;
+    }
+
+    /* Text flicker */
+    .blink{
+        font-size:13px;
+        opacity:.7;
+        margin-top:10px;
+        animation:flicker 1.3s infinite;
+    }
+
+    /* خلفية Matrix ولكن بلون أبيض باهت */
+    canvas{
+        position:absolute;
+        top:0;left:0;
+        width:100%;height:100%;
+        opacity:0.08;
+        z-index:-1;
+    }
+
+    @keyframes progress{
+        0%{transform:translateX(-120%);}
+        50%{transform:translateX(20%);}
+        100%{transform:translateX(140%);}
+    }
+
+    @keyframes flicker{
+        0%,100%{opacity:0.3;}50%{opacity:1;}
+    }
+
+    @keyframes borderPulse{
+        0%{box-shadow:0 0 10px #fff;}
+        100%{box-shadow:0 0 25px #fff;}
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+    <h1>الموقع قيد الصيانة</h1>
+
+    <p>جاري تجهيز الملفات وتحديث الاستضافة.</p>
+    <p>سيتم الانتهاء في أقرب وقت ممكن…</p>
+
+    <div class="loading"><div class="loading-fill"></div></div>
+    <div class="blink">[ System Maintenance Running... ]</div>
+</div>
+
+<script>
+let c=document.getElementById("matrix"),ctx=c.getContext("2d");
+c.height=window.innerHeight;c.width=window.innerWidth;
+let chars="01-=+/*";
+chars=chars.split("");
+let font=16,cols=c.width/font;
+let drops=[];
+for(let x=0;x<cols;x++) drops[x]=1;
+
+function draw(){
+    ctx.fillStyle="rgba(0,0,0,0.09)";
+    ctx.fillRect(0,0,c.width,c.height);
+    ctx.fillStyle="#fff"; ctx.font=font+"px monospace";
+    for(let i=0;i<drops.length;i++){
+        let txt=chars[Math.floor(Math.random()*chars.length)];
+        ctx.fillText(txt,i*font,drops[i]*font);
+        if(drops[i]*font>c.height&&Math.random()>0.97) drops[i]=0;
+        drops[i]++;
+    }
+}
+setInterval(draw,40);
+</script>
+
+</body>
+</html>
