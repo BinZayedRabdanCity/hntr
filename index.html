@@ -2,142 +2,164 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>الموقع تحت الصيانة</title>
+<title>🚧 الصيانة جارية 🚧</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family: "Consolas", monospace;}
-    body{
-        background:#000;
-        color:#fff;
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        overflow:hidden;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Consolas,monospace;}
+body{
+    background:#000;color:#fff;height:100vh;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;position:relative;
+}
 
-    .container{
-        text-align:center;
-        padding:35px 40px;
-        width:85%;
-        max-width:650px;
-        border:1px solid #fff;
-        border-radius:8px;
-        background:rgba(0,0,0,0.45);
-        backdrop-filter:blur(4px);
-        box-shadow:0 0 40px rgba(255,255,255,0.15);
-        position:relative;
-        animation:borderPulse 2s infinite alternate;
-    }
+/* Fog BG */
+.fog{
+    position:absolute;inset:0;background:radial-gradient(circle,#ffffff07 0%,#000000 80%);
+    filter:blur(60px);animation:fogMove 12s infinite alternate ease-in-out;
+}
+@keyframes fogMove{
+    0%{transform:translate(-80px,40px);}
+    100%{transform:translate(80px,-40px);}
+}
 
-    /* عنوان Glitch */
-    h1{
-        font-size:34px;
-        font-weight:bold;
-        letter-spacing:2px;
-        position:relative;
-        display:inline-block;
-        margin-bottom:18px;
-    }
-    h1::before, h1::after{
-        content:"الموقع قيد الصيانة";
-        position:absolute;left:0;top:0;
-        width:100%;height:100%;
-        background:black;overflow:hidden;
-        clip-path:inset(0 0 0 0);
-        opacity:0.15;
-    }
-    h1::before{transform:translate(2px, -2px);color:#fff;}
-    h1::after{transform:translate(-2px, 2px);color:#fff;}
+/* Floating particles */
+.bg-particles span{
+    position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;
+    animation:fall linear infinite;opacity:.25;
+}
+@keyframes fall{
+    0%{transform:translateY(-10vh) scale(0.3);opacity:.1;}
+    100%{transform:translateY(110vh) scale(1);opacity:.6;}
+}
 
-    p{font-size:15px;opacity:0.85;margin-top:6px;line-height:1.8;}
+/* Main container */
+.container{
+    position:relative;z-index:10;width:80%;max-width:650px;padding:30px;
+    background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+    border:1px solid #fff;border-radius:12px;text-align:center;
+    animation:boxGlow 2.2s ease-in-out infinite alternate,fadeIn 1.8s forwards;
+}
+@keyframes boxGlow{
+    0%{box-shadow:0 0 10px #fff;}
+    100%{box-shadow:0 0 45px #fff;}
+}
+@keyframes fadeIn{from{transform:scale(.7) translateY(40px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
 
-    /* Loading Bar */
-    .loading{
-        margin:18px 0;
-        width:100%;height:7px;
-        border:1px solid #fff;
-        border-radius:4px;
-        overflow:hidden;
-        background:#111;
-    }
-    .loading-fill{
-        height:100%;
-        width:35%;
-        background:#fff;
-        animation:progress 2s infinite;
-    }
+/* Title glitch */
+h1{
+    font-size:32px;margin-bottom:10px;letter-spacing:2px;
+    animation:glitch 1.6s infinite;
+}
+@keyframes glitch{
+    0%,100%{text-shadow:2px 0 #fff,-2px 0 #fff;}
+    40%{text-shadow:-2px 0 #ccc,2px 0 #ccc;}
+}
 
-    /* Text flicker */
-    .blink{
-        font-size:13px;
-        opacity:.7;
-        margin-top:10px;
-        animation:flicker 1.3s infinite;
-    }
+/* Text */
+p{
+    font-size:15px;opacity:.85;margin-top:8px;line-height:1.7;
+    animation:fadeText 3s infinite alternate ease-in-out;
+}
+@keyframes fadeText{0%{opacity:.4;}100%{opacity:1;}}
 
-    /* خلفية Matrix ولكن بلون أبيض باهت */
-    canvas{
-        position:absolute;
-        top:0;left:0;
-        width:100%;height:100%;
-        opacity:0.08;
-        z-index:-1;
-    }
+/* Timer */
+.timer{
+    font-size:20px;margin-top:14px;font-weight:bold;
+    animation:pulseGlow 1.5s infinite alternate;
+}
+@keyframes pulseGlow{0%{opacity:.4;}100%{opacity:1;}}
 
-    @keyframes progress{
-        0%{transform:translateX(-120%);}
-        50%{transform:translateX(20%);}
-        100%{transform:translateX(140%);}
-    }
+/* Loading bar */
+.loading{
+    margin:18px 0;width:100%;height:7px;border:1px solid #fff;border-radius:4px;
+    overflow:hidden;background:#111;
+}
+.loading-fill{
+    height:100%;width:40%;background:#fff;
+    animation:progress 2s infinite cubic-bezier(.4,.1,.6,1);
+}
+@keyframes progress{
+    0%{transform:translateX(-120%);}
+    50%{transform:translateX(10%);}
+    100%{transform:translateX(150%);}
+}
 
-    @keyframes flicker{
-        0%,100%{opacity:0.3;}50%{opacity:1;}
-    }
+/* Terminal Status */
+.terminal{
+    font-size:14px;height:26px;margin-top:12px;color:#ccc;overflow:hidden;
+    animation:glitch 2s infinite steps(2,end);
+}
 
-    @keyframes borderPulse{
-        0%{box-shadow:0 0 10px #fff;}
-        100%{box-shadow:0 0 25px #fff;}
-    }
+/* Matrix BG */
+canvas{
+    position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.06;
+}
 </style>
 </head>
 
 <body>
 
+<div class="fog"></div>
+
+<div class="bg-particles">
+<script>
+for(let i=0;i<45;i++){
+    document.write(`<span style="left:${Math.random()*100}%;animation-duration:${3+Math.random()*8}s"></span>`)
+}
+</script>
+</div>
+
 <canvas id="matrix"></canvas>
 
 <div class="container">
-    <h1>الموقع قيد الصيانة</h1>
+    <h1> الموقع قيد الصيانة</h1>
 
-    <p>جاري تجهيز الملفات وتحديث الاستضافة.</p>
-    <p>سيتم الانتهاء في أقرب وقت ممكن…</p>
+    <p>نقوم حالياً بتحديث الأنظمة وتحميل الملفات…</p>
+    
+    <p>نعمل في الوقت الحالي على تطوير وتحسين الموقع وإجراء صيانة على الخوادم<br>
+    لضمان أداء أفضل وتجربة أكثر استقراراً لكم.</p>
+
+    <div class="timer" id="countdown">جارٍ الحساب…</div>
 
     <div class="loading"><div class="loading-fill"></div></div>
-    <div class="blink">[ System Maintenance Running... ]</div>
+
+    <div class="terminal" id="terminal"></div>
 </div>
 
 <script>
+/* Matrix effect */
 let c=document.getElementById("matrix"),ctx=c.getContext("2d");
-c.height=window.innerHeight;c.width=window.innerWidth;
-let chars="01-=+/*";
-chars=chars.split("");
-let font=16,cols=c.width/font;
-let drops=[];
-for(let x=0;x<cols;x++) drops[x]=1;
-
-function draw(){
-    ctx.fillStyle="rgba(0,0,0,0.09)";
-    ctx.fillRect(0,0,c.width,c.height);
-    ctx.fillStyle="#fff"; ctx.font=font+"px monospace";
+c.height=innerHeight;c.width=innerWidth;
+let chars="01-=+/*#";chars=chars.split("");
+let font=16,cols=c.width/font,drops=[];
+for(let i=0;i<cols;i++) drops[i]=1;
+setInterval(()=>{
+    ctx.fillStyle="rgba(0,0,0,.08)";ctx.fillRect(0,0,c.width,c.height);
+    ctx.fillStyle="#fff";ctx.font=font+"px monospace";
     for(let i=0;i<drops.length;i++){
         let txt=chars[Math.floor(Math.random()*chars.length)];
         ctx.fillText(txt,i*font,drops[i]*font);
-        if(drops[i]*font>c.height&&Math.random()>0.97) drops[i]=0;
-        drops[i]++;
+        if(drops[i]*font>c.height&&Math.random()>0.96) drops[i]=0;drops[i]++;
     }
-}
-setInterval(draw,40);
+},40);
+
+/* Countdown 5 hours */
+let time=5*60*60;
+setInterval(()=>{
+    let h=Math.floor(time/3600),m=Math.floor((time%3600)/60),s=time%60;
+    document.getElementById("countdown").innerText=`الانتهاء المتوقع: ${h}h : ${m<10?'0'+m:m}m : ${s<10?'0'+s:s}s`;
+    if(time>0) time--;
+},1000);
+
+/* Terminal Messages */
+let lines=[
+    "> Connecting server...",
+    "> Uploading resources...",
+    "> Running maintenance...",
+    "> Optimizing performance...",
+    "> Please standby..."
+],i=0;
+setInterval(()=>{document.getElementById("terminal").innerText=lines[i];i=(i+1)%lines.length;},2000);
 </script>
 
 </body>
