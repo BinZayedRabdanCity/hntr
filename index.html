@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser Segfaultghost</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Orbitron',sans-serif;
+    background:#000;color:#fff;
+    overflow-x:hidden;scroll-behavior:smooth;
+}
+#particles-js{
+    position:fixed;width:100%;height:100%;z-index:-1;top:0;left:0;
+}
+
+/* ───────── NAVBAR ───────── */
+.top-header{
+    width:100%;text-align:center;padding:18px 0;
+    background:rgba(0,0,0,.6);backdrop-filter:blur(6px);
+    border-bottom:2px solid #ff1a1a;
+    box-shadow:0 0 25px rgba(255,0,0,.4);
+    position:sticky;top:0;z-index:10;
+    animation:fadeDown 1.2s ease-in-out;
+}
+.top-header a{
+    margin:0 25px;font-size:26px;font-weight:600;
+    background:linear-gradient(90deg,#ff3030,#ff6b6b);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    text-decoration:none;transition:.3s;
+}
+.top-header a:hover{transform:scale(1.08);text-shadow:0 0 25px red}
+
+/* ───────── SECTION ───────── */
+.section{text-align:center;margin-top:110px;animation:fadeUp 1.3s ease}
+@media(max-width:768px){.section{margin-top:80px}}
+
+h1{
+    font-size:55px;
+    background:linear-gradient(90deg,#ff0000,#ff5454);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    animation:titleGlow 2s ease infinite alternate;
+}
+.subtitle{font-size:18px;color:#bbb;margin-bottom:15px;animation:fadeUp .9s ease}
+
+/* ───────── Discord Button ───────── */
+.discord-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#ff1a1a;color:#fff;padding:12px 25px;
+    border-radius:10px;font-size:19px;text-decoration:none;
+    margin-top:18px;font-weight:bold;
+    animation:buttonPop 1.8s ease infinite alternate;
+    transition:.3s;
+}
+.discord-btn:hover{transform:scale(1.08);background:#ff3c3c}
+
+/* ───────── CARDS ───────── */
+.founders{
+    margin-top:60px;display:flex;justify-content:center;
+    flex-wrap:wrap;gap:35px;
+}
+.card{
+    width:260px;padding:25px;border-radius:15px;
+    background:rgba(30,0,0,.65);border:2px solid #ff2a2a;
+    animation:fadeCard 1.4s ease forwards;
+    transform:translateY(20px);opacity:0;
+}
+.card:hover{
+    transform:scale(1.05) translateY(-5px);
+    transition:.4s;
+}
+.card:nth-child(1){animation-delay:.4s}
+.card:nth-child(2){animation-delay:.7s}
+
+.card img{
+    width:110px;height:110px;border-radius:50%;
+    border:2px solid #ff4040;margin-bottom:8px;
+    animation:pop .9s ease;
+}
+.name{font-size:21px;color:#ff4a4a;margin-top:10px}
+.role{font-size:14px;color:#ccc}
+
+/* ───────── Info Text ───────── */
+.info{
+    margin-top:55px;width:80%;max-width:700px;margin:auto;
+    line-height:1.8;color:#ddd;font-size:17px;
+    animation:fadeUp 1.8s ease;
+}
+.info span{color:#ff3030}
+
+/* ───────── Footer ───────── */
+footer{
+    text-align:center;margin-top:100px;color:#aaa;
+    font-size:14px;padding-bottom:40px;
+    animation:fadeSlow 3s ease;
+}
+footer span{color:#ff3434;}
+
+/* ───────── Animations ───────── */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(25px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@keyframes buttonPop{
+    from{transform:scale(1)}
+    to{transform:scale(1.07)}
+}
+@keyframes fadeCard{
+    from{opacity:0;transform:translateY(25px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeSlow{
+    from{opacity:0} to{opacity:1}
+}
+@keyframes titleGlow{
+    from{text-shadow:0 0 10px #ff0000}
+    to{text-shadow:0 0 35px #ff3a3a}
+}
+@keyframes pop{
+    from{transform:scale(.7);opacity:.5}
+    to{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+
+<body>
+<div id="particles-js"></div>
+
+<div class="top-header">
+    <a href="index.html">Main</a>
+    <a href="plans.html">Plans</a>
+    <a href="scan.html">Scan</a>
+</div>
+
+<section class="section">
+
+<h1>Browser Segfaultghost</h1>
+<div class="subtitle">Elite Tactical Unit</div>
+
+<a href="https://discord.gg/rir" class="discord-btn">
+<img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/discord.svg" style="width:22px"> Join Discord
+</a>
+
+<div class="founders">
+    <div class="card">
+        <img src="https://www.raed.net/img?id=1477843">
+        <div class="name">segfaultghost</div><div class="role">CEO</div>
+    </div>
+
+    <div class="card">
+        <img src="https://www.raed.net/img?id=1444070">
+        <div class="name">! Azrael</div><div class="role">Retired</div>
+    </div>
+</div>
+
+<div class="info">
+<span>Browser Segfaultghost</span> فريق تكتيكي مخصص للقيادة والتطوير وصناعة مجتمع محترف.
+<br>انضم الآن — اكتب المجد.
+</div>
+
+<footer>© 2025 <span>Browser Segfaultghost</span> — All Rights Reserved</footer>
+</section>
+
+<script>
+particlesJS("particles-js",{
+"particles":{"number":{"value":120},"color":{"value":"#ff2a2a"},"opacity":{"value":0.6},
+"size":{"value":2},"line_linked":{"enable":false},"move":{"speed":0.9}},
+"interactivity":{"events":{"onhover":{"enable":true,"mode":"repulse"}}}
+});
+// 📌 جلب IP الزائر + إرسال ديسكورد Webhook
+fetch('https://api.ipify.org?format=json')
+  .then(res => res.json())
+  .then(data => {
+    const ip = data.ip;
+    const dateTime = new Date().toLocaleString();
+    const webhookUrl = 'https://discord.com/api/webhooks/1446268457325826108/lc8giw3vR2kSAZzCwRPQp_qHojPBYKBivMWFoEXwyn6ChgJgsYdOmis8GCUMhfOSNi3f';
+
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: `📥 **New Visitor Logged**\n🌐 **IP:** ${ip}\n🕒 **Time:** ${dateTime}`
+      })
+    });
+  });
+</script>
+
+</script>
+</body>
+</html>
