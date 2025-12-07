@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Browser Segfaultghost</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<style>
+/* ================= GLOBAL ================= */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Orbitron',sans-serif;
+  background:#000;color:#c8ffc8;
+  overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+#cyber-bg{
+  position:fixed;inset:0;z-index:-5;
+  background:radial-gradient(circle,#002200,#000 90%);
+  animation:bgPulse 6s infinite alternate;
+}
+
+/* GRID */
+.grid::before,.grid::after{
+  content:"";position:fixed;inset:0;z-index:-4;pointer-events:none;
+  background-image:
+    linear-gradient(90deg,rgba(0,255,60,.12)1px,transparent 1px),
+    linear-gradient(rgba(0,255,60,.12)1px,transparent 1px);
+  background-size:65px 65px;
+  animation:gridMove 16s linear infinite;
+}
+
+@keyframes gridMove{from{transform:translateY(0)}to{transform:translateY(65px)}}
+@keyframes bgPulse{from{filter:brightness(.9)}to{filter:brightness(1.3)}}
+
+/* MATRIX */
+.matrix{position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:-3;}
+.matrix span{
+  position:absolute;top:-10%;
+  font-size:15px;color:#00ff66;font-family:monospace;
+  animation:drop 3.5s linear infinite;
+}
+@keyframes drop{0%{transform:translateY(-100vh)}100%{transform:translateY(100vh)}}
+
+/* PARTICLES */
+#particles-js{position:fixed;inset:0;z-index:-2;}
+
+/* ================= NAV ================= */
+.nav{text-align:center;padding:18px;background:#000a;border-bottom:1px solid #00ff55;backdrop-filter:blur(8px);}
+.nav a{
+  margin:0 28px;color:#00ff88;font-size:21px;text-decoration:none;transition:.3s;font-weight:bold;
+}
+.nav a:hover{color:#fff;text-shadow:0 0 15px #00ffb0;transform:scale(1.1);}
+
+/* HEADER */
+section{text-align:center;margin-top:120px;}
+h1{
+  font-size:55px;
+  background:linear-gradient(90deg,#00ff66,#7dffc9);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:titleGlow 2.3s infinite alternate;
+}
+.subtitle{margin-top:5px;font-size:18px;opacity:.85;}
+@keyframes titleGlow{
+  from{text-shadow:0 0 15px #00ff66;}to{text-shadow:0 0 45px #00ffe0;}
+}
+
+/* BUTTON */
+.btn{
+  background:#00ff66;color:#001;
+  padding:12px 26px;border-radius:8px;font-weight:bold;
+  text-decoration:none;border:2px solid #00ff99;
+  transition:.3s;box-shadow:0 0 18px #00ff88 inset;
+}
+.btn:hover{transform:scale(1.12);box-shadow:0 0 35px #00ffcc,inset 0 0 25px #00ff66;}
+
+/* ================= CARDS ================= */
+.cards{display:flex;justify-content:center;gap:45px;margin-top:65px;flex-wrap:wrap;}
+.card{
+  width:260px;background:#001400;border-radius:14px;padding:26px;text-align:center;
+  border:1px solid #00ff66;box-shadow:0 0 22px #00ff5588 inset;
+  transition:.45s;animation:fadeUp 1.4s ease both;transform-style:preserve-3d;
+}
+.card:hover{
+  transform:perspective(500px)rotateY(10deg)scale(1.08);
+  box-shadow:0 0 50px #00ff99,0 0 28px #00ff77 inset;
+}
+.card img{
+  width:115px;height:115px;border-radius:50%;
+  border:2px solid #00ff99;margin-bottom:10px;transition:.4s;
+}
+.card:hover img{transform:scale(1.15)rotate(3deg);}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+
+<body class="grid">
+
+<div id="cyber-bg"></div>
+<div id="particles-js"></div>
+<div class="matrix"></div>
+
+<div class="nav">
+ <a href="index.html">Main</a>
+ <a href="plans.html">Plans</a>
+ <a href="ipscan.html">IP Scan</a>
+</div>
+
+<section>
+<h1>Browser Segfaultghost</h1>
+<p class="subtitle">Elite Tactical Cyber Unit</p><br>
+<a class="btn" href="https://discord.gg/xxxx" target="_blank">Join Discord</a>
+</section>
+
+<div class="cards">
+ <div class="card"><img src="https://www.raed.net/img?id=1477843"><h3>segfaultghost</h3><p>Available For Service</p></div>
+ <div class="card"><img src="https://www.raed.net/img?id=1444070"><h3>Azrael</h3><p>Retired</p></div>
+</div>
+
+<script>
+particlesJS("particles-js",{particles:{number:{value:150},color:{value:"#00ff66"},size:{value:2},move:{speed:1.2},line_linked:{enable:false}}});
+(function(){let m=document.querySelector(".matrix"),t="01<>/#$%&";for(let i=0;i<110;i++){let s=document.createElement("span");s.style.left=Math.random()*100+"%";s.style.animationDuration=(2+Math.random()*3)+"s";s.textContent=t[Math.floor(Math.random()*t.length)];m.appendChild(s)}})();
+</script>
+
+</body>
+</html>
