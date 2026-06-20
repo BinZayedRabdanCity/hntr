@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BinZayed — 311 Arena</title>
+<title>BinZayed — ŚegfaultGhost</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&family=Tajawal:wght@400;500;700;900&display=swap');
 
@@ -166,8 +166,8 @@
   /* ===== DISCORD FRIENDS ===== */
   .discord-layout{
     display:grid;
-    grid-template-columns:340px minmax(0,1fr);
-    gap:24px;
+    grid-template-columns:270px minmax(0,1fr);
+    gap:20px;
     align-items:start;
   }
   .discord-profile-card{
@@ -178,7 +178,7 @@
     box-shadow:0 12px 32px rgba(255,45,70,.06);
   }
   .discord-banner{
-    height:240px;
+    height:150px;
     background-size:cover;
     background-position:center;
     position:relative;
@@ -190,23 +190,23 @@
     background:linear-gradient(to bottom, rgba(7,8,10,0.08), rgba(7,8,10,0.85));
   }
   .discord-content{
-    padding:28px 22px 24px;
+    padding:16px 14px 18px;
     text-align:center;
     position:relative;
-    margin-top:-18px;
+    margin-top:-8px;
   }
   .discord-avatar{
-    width:126px;
-    height:126px;
+    width:88px;
+    height:88px;
     border-radius:50%;
-    margin-top:-88px;
-    border:6px solid var(--panel);
+    margin-top:-46px;
+    border:4px solid var(--panel);
     object-fit:cover;
   }
   .discord-name{
-    font-size:28px;
+    font-size:22px;
     font-weight:700;
-    margin-top:14px;
+    margin-top:10px;
     color:var(--text);
   }
   .discord-status{
@@ -225,20 +225,22 @@
     display:inline-block;
     margin-top:14px;
     padding:8px 12px;
-    border:1px solid var(--red-soft);
+    border:1px solid var(--border);
     border-radius:999px;
-    color:var(--red);
+    color:var(--text-dim);
     font-family:'JetBrains Mono', monospace;
     font-size:11px;
     transition:.2s ease;
   }
   .discord-link:hover{
-    background:var(--red-dim);
+    color:var(--text);
+    background:rgba(255,255,255,0.04);
   }
   .friends-grid{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
     gap:18px;
+    align-items:stretch;
   }
   .friend-card{
     background:var(--card);
@@ -246,17 +248,21 @@
     border-radius:16px;
     overflow:hidden;
     transition:.3s ease;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    min-height:320px;
   }
   .friend-card:hover{
     transform:translateY(-5px);
-    border-color:var(--red-soft);
-    box-shadow:0 12px 30px rgba(255,45,70,.1);
+    border-color:#2b3139;
+    box-shadow:0 10px 24px rgba(0,0,0,.18);
   }
   .friend-banner{
     height:112px;
+    min-height:112px;
     background:
-      linear-gradient(135deg, rgba(255,45,70,0.88), rgba(20,8,12,0.78)),
-      radial-gradient(circle at top, rgba(255,255,255,0.1), transparent 40%),
+      linear-gradient(180deg, rgba(255,255,255,0.04), rgba(7,8,10,0.88)),
       url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80') center/cover;
     position:relative;
   }
@@ -272,6 +278,10 @@
     text-align:center;
     position:relative;
     background:linear-gradient(to bottom, rgba(18,21,25,0.98), rgba(12,14,18,1));
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
   }
   .friend-avatar{
     width:78px;
@@ -294,7 +304,7 @@
     font-size:12px;
   }
   .friend-activity{
-    color:var(--red);
+    color:var(--text-dim);
     margin-top:10px;
     font-size:13px;
   }
@@ -374,7 +384,7 @@
 <nav>
   <div class="logo">
     <span class="mark mono">BZ</span>
-    <span class="sub">311.ARENA</span>
+    <span class="sub">ŚegfaultGhost</span>
   </div>
   <div class="nav-links">
     <a href="#top">الرئيسية</a>
@@ -391,7 +401,7 @@
     <div class="eyebrow">[+] PUBLIC.PROFILE</div>
     <h1 class="hero-title">
       <span class="hero-name" dir="ltr" id="heroName">BinZayed</span>
-      <span class="hero-line2" id="heroLine2">يبرمج <span>خارج</span> الضجيج.</span>
+      <span class="hero-line2" id="heroLine2">Welcome <span>To</span> My Site.</span>
     </h1>
     <p class="hero-desc" id="heroDesc"></p>
     <div class="btn-row">
@@ -431,7 +441,6 @@
         <div class="status-headline">ACTIVE <span class="pulse-dot"></span></div>
         <div class="status-rows">
           <div class="status-row"><span>tag</span><span class="val" id="statTag">—</span></div>
-          <div class="status-row"><span>server</span><span class="val">Uae Rp</span></div>
           <div class="status-row"><span>region</span><span class="val" id="statRegion">—</span></div>
           <div class="status-row"><span>role</span><span class="val">Developer</span></div>
         </div>
@@ -481,14 +490,14 @@
 
 <footer>
   <div class="mono" dir="ltr">root@binzayed:~$ <span class="cursor">▌</span></div>
-  <div>© 2026 BinZayed — 311 Arena</div>
+  <div>© 2026 BinZayed — ŚegfaultGhost</div>
 </footer>
 
 <script>
   const config = {
     username: "BinZayed",
-    tag: "311 Arena",
-    region: "الإمارات",
+    tag: "ŚegfaultGhost",
+    region: "Ru",
     bio: "مبرمج شغوف بابتكار حلول ذكية وبسيطة، يحب التحدي والتعلم المستمر، يسعى لتطوير نفسه دائماً وكتابة كود نظيف واحترافي.",
     games: [
       { img: "https://logos-world.net/wp-content/uploads/2021/03/FiveM-Symbol.png", name: "Fivem", desc: "لعبة عالم مفتوح مثيرة." },
@@ -499,17 +508,16 @@
       { img: "https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=en-us/fortnite/fortnite-creator&application_version=1.0", name: "Fortnite", desc: "باتل رويال حماسي برسومات كرتونية وأحداث حية." }
     ],
     languages: [
-      { img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/2048px-Lua-Logo.svg.png", name: "Lua" },
+      { img: "https://i.ibb.co/svKzRnGH/1-A240h-Qnv-DQs-FRGu-Khi-OTw.png", name: "Lua" },
       { img: "https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo-2011.png", name: "Css" },
       { img: "https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png", name: "Python" },
       { img: "https://datascientest.com/wp-content/uploads/2024/10/Kali-Linux-DataScientest-1024x512.webp", name: "Kali" },
-      { img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png", name: "Html" },
-      { img: "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png", name: "Java" }
+      { img: "https://i.ibb.co/ZpvxLsz6/HTML5.webp", name: "Html" },
+      { img: "https://i.ibb.co/jNBBLWb/img-js.png", name: "Java" }
     ],
     social: [
-      { img: "https://www.raed.net/img?id=1399166", name: "Discord — 311 Arena", desc: "discord.gg/3-1", link: "https://discord.gg/3-1" },
-      { img: "https://www.raed.net/img?id=1402766", name: "Discord — Leakz", desc: "discord.gg/icmp", link: "https://discord.gg/icmp" },
-      { img: "https://www.raed.net/img?id=1399167", name: "Discord — Uae Rp", desc: "discord.gg/uaa", link: "https://discord.gg/uaa" }
+      { img: "https://i.ibb.co/fzbCMcsn/512.png", name: "Discord — Rabdan Rp", desc: "discord.gg/rbn", link: "https://discord.gg/rbn" },
+      { img: "https://i.ibb.co/FR5zD19/mwr8xr4.png", name: "Discord — Khaleej", desc: "discord.gg/craw", link: "https://discord.gg/craw" }
     ]
   };
 
@@ -568,48 +576,51 @@
   // Discord section (shown immediately with fallback data if the live API is unavailable)
   const profileData = {
     name: "BinZayed",
-    activity: "Coding / Building",
-    avatar: "https://media.discordapp.net/attachments/1517822412010295336/1517953785497129081/f3d08999ca5832533b52c8da3531fc4a.webp?ex=6a382820&is=6a36d6a0&hm=b4302c719f717ae457a1d5cf9b69d994e1f1a90038ab8c878a70249201356e38&=&format=webp",
-    banner: "https://media.discordapp.net/attachments/1517822412010295336/1517953785215979631/c498406364ceaaae0462056145423576.webp?ex=6a382820&is=6a36d6a0&hm=45702703187799a7b12f22eb9d2cc73d9589f32b4b1a9b437e625c719f17308d&=&format=webp",
-    discordUrl: "https://discord.com/api/oauth2/authorize?client_id=1461043118714392825&redirect_uri=https%3A%2F%2Fbzyd.xyz%2F&response_type=code&scope=identify%20openid"
+    activity: "Focused on growth, protected by peace, and guided by purpose.",
+    status: "Online",
+    avatar: "https://i.ibb.co/7Jg9qx05/f3d08999ca5832533b52c8da3531fc4a.webp",
+    banner: "https://i.ibb.co/wNfp8ck7/c498406364ceaaae0462056145423576.webp",
   };
 
   const friendsData = [
     {
-      name: "Friend 1",
+        
+      name: "Fùry",
       activity: "Playing",
-      avatar: "https://cdn.discordapp.com/embed/avatars/1.png",
-      banner: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+      status: "Mysterious, calm, and his presence speaks before his words. He doesn't command attention with his voice, but with his aura and undeniable presence.",
+      avatar: "https://i.ibb.co/PGbFtj5r/6da9a08712b28765695104570c39a823.webp",
+      banner: "https://i.ibb.co/nNxB7Rjt/5c0c9ecb2d5f3d1a666445fbe07c83a8.webp"
     },
-    {
-      name: "Friend 2",
-      activity: "Listening",
-      avatar: "https://cdn.discordapp.com/embed/avatars/2.png",
-      banner: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80"
+        {
+      name: "! Faisal",
+      activity: "Playing",
+      status: "A calm soul who finds peace in silence and purpose in code.",
+      avatar: "https://i.ibb.co/pvrKpXD9/37939dd6b9c7eb22719986d129c3bb93.webp",
+      banner: "https://i.ibb.co/nNxB7Rjt/5c0c9ecb2d5f3d1a666445fbe07c83a8.webp"
     },
-    {
-      name: "Friend 3",
-      activity: "In a call",
-      avatar: "https://cdn.discordapp.com/embed/avatars/3.png",
-      banner: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+            {
+      name: "Lost",
+      activity: "Playing",
+      status: "A calm person who is always eager to learn and passionate about cybersecurity.",
+      avatar: "https://i.ibb.co/2QPZYnN/2600a2ae927e2b92a407087ed9b35d5a.webp",
+      banner: "https://i.ibb.co/9jj2xbG/b9cd4fbf878e2393b6705eda4de1a106.webp"
     }
   ];
 
   function renderDiscordSection() {
     document.getElementById("discordProfile").innerHTML = `
-      <div class="discord-banner" style="background-image: linear-gradient(135deg, rgba(255,45,70,0.78), rgba(17,11,14,0.72)), url('${profileData.banner}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+      <div class="discord-banner" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(7,8,10,0.82)), url('${profileData.banner}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
       <div class="discord-content">
         <img src="${profileData.avatar}" alt="${profileData.name}" class="discord-avatar">
         <div class="discord-name">${profileData.name}</div>
         <div class="discord-status">${profileData.status}</div>
         <div class="discord-activity">${profileData.activity}</div>
-        <a class="discord-link" href="${profileData.discordUrl}" target="_blank" rel="noopener noreferrer">Open Discord</a>
       </div>
     `;
 
     document.getElementById("friendsList").innerHTML = friendsData.map(friend => `
       <div class="friend-card">
-        <div class="friend-banner" style="background-image: linear-gradient(135deg, rgba(255,45,70,0.82), rgba(17,11,14,0.78)), url('${friend.banner}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+        <div class="friend-banner" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(7,8,10,0.82)), url('${friend.banner}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
         <div class="friend-body">
           <img src="${friend.avatar}" alt="${friend.name}" class="friend-avatar">
           <div class="friend-name">${friend.name}</div>
