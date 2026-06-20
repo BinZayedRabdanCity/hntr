@@ -1,0 +1,96 @@
+.discord-profile-card{
+  background:#121519;
+  border:1px solid #1c2026;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.discord-banner{
+  height:220px;
+  background-size:cover;
+  background-position:center;
+}
+
+.discord-content{
+  padding:25px;
+  text-align:center;
+}
+
+.discord-avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  margin-top:-80px;
+  border:6px solid #121519;
+}
+
+.discord-name{
+  font-size:32px;
+  font-weight:700;
+  margin-top:15px;
+}
+
+.discord-status{
+  color:#8a8e96;
+  margin-top:8px;
+}
+
+.discord-activity{
+  margin-top:12px;
+  color:#ff2d46;
+  font-weight:700;
+}
+
+.friends-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+
+.friend-card{
+  background:#121519;
+  border:1px solid #1c2026;
+  border-radius:15px;
+  overflow:hidden;
+  transition:.3s;
+}
+
+.friend-card:hover{
+  transform:translateY(-5px);
+  border-color:#ff2d46;
+}
+
+.friend-banner{
+  height:100px;
+  background:linear-gradient(135deg,#ff2d46,#76121d);
+}
+
+.friend-body{
+  padding:20px;
+  text-align:center;
+}
+
+.friend-avatar{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  margin-top:-60px;
+  border:5px solid #121519;
+}
+
+.friend-name{
+  font-size:18px;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.friend-status{
+  color:#8a8e96;
+  margin-top:8px;
+}
+
+.friend-activity{
+  color:#ff2d46;
+  margin-top:10px;
+  font-size:13px;
+}

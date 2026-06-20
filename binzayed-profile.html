@@ -1,0 +1,135 @@
+<script>
+const MY_ID = "1382057837898760212";
+
+const FRIENDS = [
+  "183743708863135744",
+  "751444182987702403",
+  "183743708863135744"
+];
+
+function statusText(status){
+  switch(status){
+    case "online": return "🟢 Online";
+    case "idle": return "🌙 Idle";
+    case "dnd": return "⛔ Do Not Disturb";
+    default: return "⚫ Offline";
+  }
+}
+
+async function loadMainProfile(){
+
+  try{
+
+    const res = await fetch(
+      `https://api.lanyard.rest/v1/users/${MY_ID}`
+    );
+
+    const json = await res.json();
+
+    const data = json.data;
+
+    const avatar =
+      `https://cdn.discordapp.com/avatars/${MY_ID}/${data.discord_user.avatar}.png?size=1024`;
+
+    let activity = "No Activity";
+
+    if(data.activities.length){
+      activity = data.activities[0].name;
+    }
+
+    document.getElementById("discordProfile").innerHTML = `
+      <div class="discord-banner"
+      style="background:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000') center/cover">
+      </div>
+
+      <div class="discord-content">
+
+        <img src="${avatar}" class="discord-avatar">
+
+        <div class="discord-name">
+          ${data.discord_user.display_name || data.discord_user.username}
+        </div>
+
+        <div class="discord-status">
+          ${statusText(data.discord_status)}
+        </div>
+
+        <div class="discord-activity">
+          ${activity}
+        </div>
+
+      </div>
+    `;
+
+  }catch(err){
+    console.log(err);
+  }
+}
+
+async function loadFriends(){
+
+  const container = document.getElementById("friendsList");
+
+  container.innerHTML = "";
+
+  for(const id of FRIENDS){
+
+    try{
+
+      const res = await fetch(
+        `https://api.lanyard.rest/v1/users/${id}`
+      );
+
+      const json = await res.json();
+
+      const data = json.data;
+
+      const avatar =
+        `https://cdn.discordapp.com/avatars/${id}/${data.discord_user.avatar}.png?size=512`;
+
+      let activity = "No Activity";
+
+      if(data.activities.length){
+        activity = data.activities[0].name;
+      }
+
+      container.innerHTML += `
+        <div class="friend-card">
+
+          <div class="friend-banner"></div>
+
+          <div class="friend-body">
+
+            <img src="${avatar}" class="friend-avatar">
+
+            <div class="friend-name">
+              ${data.discord_user.display_name || data.discord_user.username}
+            </div>
+
+            <div class="friend-status">
+              ${statusText(data.discord_status)}
+            </div>
+
+            <div class="friend-activity">
+              ${activity}
+            </div>
+
+          </div>
+
+        </div>
+      `;
+
+    }catch(err){
+      console.log(err);
+    }
+  }
+}
+
+loadMainProfile();
+loadFriends();
+
+setInterval(() => {
+  loadMainProfile();
+  loadFriends();
+}, 15000);
+</script>
