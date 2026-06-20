@@ -253,12 +253,25 @@
     box-shadow:0 12px 30px rgba(255,45,70,.1);
   }
   .friend-banner{
-    height:96px;
-    background:linear-gradient(135deg, var(--red), #5a0d16);
+    height:112px;
+    background:
+      linear-gradient(135deg, rgba(255,45,70,0.88), rgba(20,8,12,0.78)),
+      radial-gradient(circle at top, rgba(255,255,255,0.1), transparent 40%),
+      url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80') center/cover;
+    position:relative;
+  }
+  .friend-banner::after{
+    content:'';
+    position:absolute;
+    inset:auto 0 0;
+    height:40%;
+    background:linear-gradient(to top, rgba(7,8,10,0.78), transparent);
   }
   .friend-body{
     padding:18px 16px 16px;
     text-align:center;
+    position:relative;
+    background:linear-gradient(to bottom, rgba(18,21,25,0.98), rgba(12,14,18,1));
   }
   .friend-avatar{
     width:78px;
@@ -555,37 +568,36 @@
   // Discord section (shown immediately with fallback data if the live API is unavailable)
   const profileData = {
     name: "BinZayed",
-    status: "Online",
     activity: "Coding / Building",
-    avatar: "https://cdn.discordapp.com/embed/avatars/0.png",
-    banner: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
-    discordUrl: "https://discord.com/users/1382057837898760212"
+    avatar: "https://media.discordapp.net/attachments/1517822412010295336/1517953785497129081/f3d08999ca5832533b52c8da3531fc4a.webp?ex=6a382820&is=6a36d6a0&hm=b4302c719f717ae457a1d5cf9b69d994e1f1a90038ab8c878a70249201356e38&=&format=webp",
+    banner: "https://media.discordapp.net/attachments/1517822412010295336/1517953785215979631/c498406364ceaaae0462056145423576.webp?ex=6a382820&is=6a36d6a0&hm=45702703187799a7b12f22eb9d2cc73d9589f32b4b1a9b437e625c719f17308d&=&format=webp",
+    discordUrl: "https://discord.com/api/oauth2/authorize?client_id=1461043118714392825&redirect_uri=https%3A%2F%2Fbzyd.xyz%2F&response_type=code&scope=identify%20openid"
   };
 
   const friendsData = [
     {
       name: "Friend 1",
-      status: "Online",
       activity: "Playing",
-      avatar: "https://cdn.discordapp.com/embed/avatars/1.png"
+      avatar: "https://cdn.discordapp.com/embed/avatars/1.png",
+      banner: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
     },
     {
       name: "Friend 2",
-      status: "Idle",
       activity: "Listening",
-      avatar: "https://cdn.discordapp.com/embed/avatars/2.png"
+      avatar: "https://cdn.discordapp.com/embed/avatars/2.png",
+      banner: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80"
     },
     {
       name: "Friend 3",
-      status: "Do Not Disturb",
       activity: "In a call",
-      avatar: "https://cdn.discordapp.com/embed/avatars/3.png"
+      avatar: "https://cdn.discordapp.com/embed/avatars/3.png",
+      banner: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
     }
   ];
 
   function renderDiscordSection() {
     document.getElementById("discordProfile").innerHTML = `
-      <div class="discord-banner" style="background:linear-gradient(135deg, rgba(255,45,70,0.78), rgba(17,11,14,0.72)), url('${profileData.banner}') center/cover"></div>
+      <div class="discord-banner" style="background-image: linear-gradient(135deg, rgba(255,45,70,0.78), rgba(17,11,14,0.72)), url('${profileData.banner}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
       <div class="discord-content">
         <img src="${profileData.avatar}" alt="${profileData.name}" class="discord-avatar">
         <div class="discord-name">${profileData.name}</div>
@@ -597,7 +609,7 @@
 
     document.getElementById("friendsList").innerHTML = friendsData.map(friend => `
       <div class="friend-card">
-        <div class="friend-banner"></div>
+        <div class="friend-banner" style="background-image: linear-gradient(135deg, rgba(255,45,70,0.82), rgba(17,11,14,0.78)), url('${friend.banner}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
         <div class="friend-body">
           <img src="${friend.avatar}" alt="${friend.name}" class="friend-avatar">
           <div class="friend-name">${friend.name}</div>
